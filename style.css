@@ -1,0 +1,112 @@
+/* Body and background */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #e0f7fa, #e1bee7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Main content box */
+.main-box {
+    background: #ffffff;
+    padding: 40px 50px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    max-width: 500px;
+    box-sizing: border-box;
+}
+
+/* Page headings */
+h2, h3 {
+    text-align: center;
+    color: #6a1b9a;
+    margin-bottom: 30px;
+}
+
+/* Labels & inputs */
+label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #333;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+/* Button styles */
+input[type="submit"],
+button {
+    background-color: #6a1b9a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-weight: 600;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    background-color: #8e24aa;
+}
+
+/* Links section */
+.links {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.links a {
+    margin: 0 8px;
+    text-decoration: none;
+    color: #1e88e5;
+    font-weight: 500;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+/* Table design */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f3e5f5;
+    color: #4a148c;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .main-box {
+        padding: 30px 20px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}

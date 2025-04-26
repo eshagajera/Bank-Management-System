@@ -1,0 +1,52 @@
+<?php
+session_start();
+if(!isset($_SESSION['userid'])) {
+    echo "<a href='Login.php'>Go to Login</a>";
+    exit;
+}
+?>
+<html>
+<head>
+    <title>Withdraw</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="main-box">
+        <h2>Withdraw Money</h2>
+        <form method="post">
+            Amount : <input type="text" name="amount" placeholder="Enter amount"><br><br>
+            <input type="submit" name="withdraw" value="Withdraw"><br><br>
+            <a href="DashBoard.php">Back to Dashboard</a><br><br>
+            <a href="index.php">Back to Home</a><br><br>
+        </form>
+
+        <?php
+        if(isset($_POST['withdraw'])) 
+		{
+            $amt = $_POST['amount'];
+            $uid = $_SESSION['userid'];
+            $con = mysqli_connect("localhost", "root", "", "bank");
+            $check = mysqli_query($con, "SELECT balance FROM users WHERE id=$uid");
+            $bal = mysqli_fetch_assoc($check)['balance'];
+            if($amt > $bal) 
+			{
+                echo "Insufficient Balance!";
+            } 
+			else 
+			{
+                $sql = "UPDATE users SET balance = balance - $amt WHERE id = $uid";
+                if(mysqli_query($con, $sql)) 
+				{
+                    echo "₹$amt withdrawn successfully!";
+                }
+				else 
+				{
+                    echo "Withdraw failed!";
+                }
+            }
+            mysqli_close($con);
+        }
+        ?>
+    </div>
+</body>
+</html>

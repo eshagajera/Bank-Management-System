@@ -1,0 +1,48 @@
+<html>
+<head>
+    <title>SBI - Register</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div class="main-box">
+    <h2>SBI User Registration</h2>
+    <form method="post">
+        Full Name : <input type="text" name="fullname" placeholder="Enter your full name" required><br><br>
+        Age : <input type="number" name="age" placeholder="Enter your age" required><br><br>
+        Date of Birth : <input type="date" name="dob" required><br><br>
+        Username : <input type="text" name="username" placeholder="Create a username" required><br><br>
+        Password : <input type="password" name="password" placeholder="Create a password" required><br><br>
+        <input type="submit" name="submit" value="Register">
+        <input type="reset" value="Reset"><br><br>
+        <a href="login.php">Already Registered? Login</a><br><br>
+        <a href="index.php">Back to Home</a><br><br>
+    </form>
+
+    <?php
+    if(isset($_POST['submit'])) 
+	{
+        $fullname = $_POST['fullname'];
+        $age = $_POST['age'];
+        $dob = $_POST['dob'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        $con = mysqli_connect("localhost", "root", "", "bank");
+        if(!$con) die("Connection failed: " . mysqli_connect_error());
+
+        $sql = "INSERT INTO users(fullname, age, dob, username, password, balance) 
+                VALUES ('$fullname', $age, '$dob', '$username', '$password', 0)";
+        if(mysqli_query($con, $sql)) 
+		{
+            echo "<p class='success'>User registered successfully!</p>";
+        } 
+		else 
+		{
+            echo "<p class='error'>Error: " . mysqli_error($con) . "</p>";
+        }
+        mysqli_close($con);
+    }
+    ?>
+</div>
+</body>
+</html>

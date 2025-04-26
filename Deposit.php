@@ -1,0 +1,44 @@
+<?php
+session_start();
+if(!isset($_SESSION['userid'])) 
+{
+    echo "<a href='Login.php'>Go to Login</a><br>";
+    exit;
+}
+?>
+<html>
+<head>
+    <title>Deposit</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="main-box">
+        <h2>Deposit Money</h2>
+        <form method="post">
+            Amount : <input type="text" name="amount" placeholder="Enter amount"><br><br>
+            <input type="submit" name="deposit" value="Deposit"><br><br>
+            <a href="DashBoard.php">Back to Dashboard</a><br><br>
+            <a href="index.php">Back to Home</a><br><br>
+        </form>
+
+        <?php
+        if(isset($_POST['deposit'])) 
+		{
+            $amt = $_POST['amount'];
+            $uid = $_SESSION['userid'];
+            $con = mysqli_connect("localhost", "root", "", "bank");
+            $sql = "UPDATE users SET balance = balance + $amt WHERE id = $uid";
+            if(mysqli_query($con, $sql)) 
+			{
+                echo "₹$amt deposited successfully!";
+            } 
+			else 
+			{
+                echo "Deposit failed!";
+            }
+            mysqli_close($con);
+        }
+        ?>
+    </div>
+</body>
+</html>
