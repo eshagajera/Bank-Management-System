@@ -21,7 +21,7 @@ It is styled with HTML and CSS for a clean and attractive user interface.
      - Command to Clone the Repository :  git clone https://github.com/your-username/your-repository-name.git
 4. Open phpMyAdmin and create a database (e.g., bank_system).
 5. Import the provided .sql database file (if available).
-6. Open your browser and go to : http://localhost/your-repository-name/index.php
+6. Open your browser and go to : http://localhost/Bank-Management-System/index.php
 7. Register a new account and enjoy banking functionalities!
 
 ### Technologies Used :
